@@ -80,7 +80,7 @@
     <td>南京大学开源镜像站, nexus3</td>
   </tr>
   <tr>
-    <td>docker.mirrors.situg.situ.edu.cn</td>  
+    <td>docker.mirrors.sjtug.sjtu.edu.cn</td>  
     <td>上海交通大学, registry2 proxy</td>
   </tr>
   <tr>
