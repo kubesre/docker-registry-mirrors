@@ -16,7 +16,7 @@
 <img src="https://cdn.jsdelivr.net/gh/kubesre/tu@main/img/image_20240420_214408.gif" width="800"  height="3">
 </div><br>
 
-本项目灵感来自：[Thanks-Mirro](https://github.com/eryajf/Thanks-Mirror)，该项目分享的是docker镜像直接可用，质量好，速度快的镜像
+本项目灵感来自：[Thanks-Mirror](https://github.com/eryajf/Thanks-Mirror)，该项目分享的是docker镜像直接可用，质量好，速度快的镜像
 
 在此，对那些提供公共仓库镜像的企业或组织，致以感谢🫡！
 
