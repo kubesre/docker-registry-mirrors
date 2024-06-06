@@ -138,3 +138,10 @@ grep -n image: install.yaml
 22531:        image: quay.nju.edu.cn/argoproj/argocd:v2.11.0
 22825:        image: quay.nju.edu.cn/argoproj/argocd:v2.11.0
 ```
+# 贡献者
+
+<a href="https://github.com/kubesre/docker-registry-mirrors/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=kubesre/docker-registry-mirrors" />
+</a>
+
+Made with [contrib.rocks](https://contrib.rocks).
