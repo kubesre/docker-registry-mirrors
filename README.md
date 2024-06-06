@@ -63,7 +63,7 @@
   </tr>
   <tr>
   <td rowspan="2">nvcr.io</td>
-    <td>nver.nju.edu.cn</td>
+    <td>nvcr.nju.edu.cn</td>
     <td>南京大学开源镜像站, nexus3</td>
   </tr>
   <tr>
