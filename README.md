@@ -1,19 +1,19 @@
 <div align="center">
 
-# docker-mirror
+# docker-registry-mirrors
 
-[![Auth](https://img.shields.io/badge/Auth-gebangfeng-ff69b4)](https://github.com/gebangfeng)
-[![GitHub contributors](https://img.shields.io/github/contributors/gebangfeng/docker-mirror)](https://github.com/gebangfeng/docker-mirror/graphs/contributors)
-[![GitHub Issues](https://img.shields.io/github/issues/gebangfeng/docker-mirror.svg)](https://github.com/gebangfeng/docker-mirror/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/gebangfeng/docker-mirror)](https://github.com/gebangfeng/docker-mirror/pulls)
-[![GitHub Pull Requests](https://img.shields.io/github/stars/gebangfeng/docker-mirror)](https://github.com/gebangfeng/docker-mirror/stargazers)
-[![HitCount](https://views.whatilearened.today/views/github/gebangfeng/docker-mirror.svg)](https://github.com/gebangfeng/docker-mirror)
-[![GitHub license](https://img.shields.io/github/license/gebangfeng/docker-mirror)](https://github.com/gebangfeng/docker-mirror/blob/main/LICENSE)
-[![](https://img.shields.io/badge/Awesome-MyStarList-c780fa?logo=Awesome-Lists)](https://github.com/gebangfeng/awesome-stars-gebangfeng#readme)
+[![Auth](https://img.shields.io/badge/Auth-kubesre-ff69b4)](https://github.com/kubesre)
+[![GitHub contributors](https://img.shields.io/github/contributors/kubesre/docker-registry-mirrors)](https://github.com/kubesre/docker-registry-mirrors/graphs/contributors)
+[![GitHub Issues](https://img.shields.io/github/issues/kubesre/docker-registry-mirrors.svg)](https://github.com/kubesre/docker-registry-mirrors/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kubesre/docker-registry-mirrors)](https://github.com/kubesre/docker-registry-mirrors/pulls)
+[![GitHub Pull Requests](https://img.shields.io/github/stars/kubesre/docker-registry-mirrors)](https://github.com/kubesre/docker-registry-mirrors/stargazers)
+[![HitCount](https://views.whatilearened.today/views/github/kubesre/docker-registry-mirrors.svg)](https://github.com/kubesre/docker-registry-mirrors)
+[![GitHub license](https://img.shields.io/github/license/kubesre/docker-registry-mirrors)](https://github.com/kubesre/docker-registry-mirrors/blob/main/LICENSE)
+[![](https://img.shields.io/badge/Awesome-MyStarList-c780fa?logo=Awesome-Lists)](https://github.com/kubesre/awesome-stars-kubesre#readme)
 
 <p> 多平台容器镜像代理服务,支持 Docker Hub, GitHub, Google, k8s, Quay, Microsoft 等镜像仓库. </p>
 
-<img src="https://cdn.jsdelivr.net/gh/gebangfeng/tu@main/img/image_20240420_214408.gif" width="800"  height="3">
+<img src="https://cdn.jsdelivr.net/gh/kubesre/tu@main/img/image_20240420_214408.gif" width="800"  height="3">
 </div><br>
 
 本项目灵感来自：[Thanks-Mirro](https://github.com/eryajf/Thanks-Mirror)，该项目分享的是docker镜像直接可用，质量好，速度快的镜像
