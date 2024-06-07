@@ -22,6 +22,45 @@
 📢 注意：今日一些提供公有镜像仓库的组织,宣布因监管要求被下架,需要自行核实镜像加速地址的有效性,如果失效了,或者发现了新的镜像也欢迎告诉我们。目前已知提供公有镜像服务比较好的项目：[public-image-mirror](https://github.com/DaoCloud/public-image-mirror)
 
 
+# 公益仓库
+由于很多仓库都失效了，所以我们搭建了公益的镜像仓库，供大家下载使用。
+镜像仓库的带宽有限，所以，推荐自行搭建
+**搭建自己的镜像加速仓库**
+[crproxy](https://github.com/wzshiming/crproxy/tree/master/examples/default)
+```
+kubesre.xyz
+```
+## 使用方法
+**增加前缀 (推荐方式)。比如：**
+```
+k8s.gcr.io/coredns/coredns => kubesre.xyz/k8s.gcr.io/coredns/coredns
+```
+**或者 支持的镜像仓库 的 前缀替换 就可以使用。比如：**
+
+```
+k8s.gcr.io/coredns/coredns => k8s-gcr.kubesre.xyz/coredns/coredns
+```
+
+
+## 支持前缀替换的 Registry
+
+前缀替换的 Registry 的规则, 这是人工配置的, 有需求提 Issue.**
+
+| 源站	                 | 替换为              |
+|--------------------------|------------------------------|
+| cr.l5d.io                | l5d.kubesre.xyz               |
+| docker.elastic.co        | elastic.kubesre.xyz           |
+| docker.io                | docker.kubesre.xyz            |
+| gcr.io                   | gcr.kubesre.xyz               |
+| ghcr.io                  | ghcr.kubesre.xyz              |
+| k8s.gcr.io               | k8s-gcr.kubesre.xyz           |
+| registry.k8s.io          | k8s.kubesre.xyz               |
+| mcr.microsoft.com        | mcr.kubesre.xyz               |
+| nvcr.io                  | nvcr.kubesre.xyz              |
+| quay.io                  | quay.kubesre.xyz              |
+| registry.jujucharms.com   | jujucharms.kubesre.xyz        |
+
+## 收集的一些镜像仓库
 <table border="1">
   <tr>
     <th>仓库地址</th>
