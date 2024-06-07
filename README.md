@@ -53,7 +53,7 @@
     <td>上海交通大学</td>
   </tr>
   <tr>
-    <td style="color: red;">k8s.tencentclouacr.com</td>
+    <td style="color: red;">k8s.tencentcloudcr.com</td>
     <td>仅腾讯, 云vpc内部访问, registry2 proxy</td>
   </tr>
   <tr>
