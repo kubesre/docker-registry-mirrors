@@ -19,6 +19,9 @@
 
 在此，对那些提供公共仓库镜像的企业或组织，致以感谢🫡！
 
+📢 注意：今日一些提供公有镜像仓库的组织,宣布因监管要求被下架,需要自行核实镜像加速地址的有效性,如果失效了,或者发现了新的镜像也欢迎告诉我们。目前已知提供公有镜像服务比较好的项目：[public-image-mirror](https://github.com/DaoCloud/public-image-mirror)
+
+
 <table border="1">
   <tr>
     <th>仓库地址</th>
@@ -26,53 +29,73 @@
     <th>备注</th>
   </tr>
   <tr>
-    <td rowspan="2">ghcr.io</td>
+    <td rowspan="3">ghcr.io</td>
     <td>ghcr.nju.edu.cn</td>
     <td>南京大学开源镜像站, nexus3</td>
+  </tr>
+    <tr>
+    <td>ghcr.m.daocloud.io</td>
+    <td>daocloud</td>
   </tr>
   <tr>
     <td style="color: red;">ghcr.tencentcloudcr.com</td>
     <td>仅腾讯云vpc内部访问，registry2 proxy</td>
   </tr>
   <tr>
-    <td rowspan="2" >registry.k8s.io</td>
+    <td rowspan="3" >registry.k8s.io</td>
     <td>registry-k8s-io.mirrors.sjtug.sjtu.edu.cn</td>
     <td>上海交通大学, registry2 proxy</td>
+  </tr>
+      <tr>
+    <td>k8s.m.daocloud.io</td>
+    <td>daocloud</td>
   </tr>
   <tr>
     <td>k8s.nju.edu.cn</td>
     <td>南京大学开源镜像站, nexus3</td>
   </tr>
   <tr>
-   <td rowspan="3">k8s.gcr.io</td>
+   <td rowspan="4">k8s.gcr.io</td>
     <td>gcr.nju.edu.cn</td>
     <td>南京大学开源镜像站, nexus3</td>
   </tr>
   <tr>
-    <td style="color: red;">k8s-gcr-io.mirrors.sjtug.sjtu.edu.cn</td>
+    <td>k8s-gcr-io.mirrors.sjtug.sjtu.edu.cn</td>
     <td>上海交通大学</td>
+  </tr>
+      <tr>
+    <td>ghcr.m.daocloud.io</td>
+    <td>daocloud</td>
   </tr>
   <tr>
     <td style="color: red;">k8s.tencentcloudcr.com</td>
     <td>仅腾讯, 云vpc内部访问, registry2 proxy</td>
   </tr>
   <tr>
-    <td rowspan="3">quay.io</td>
+    <td rowspan="4">quay.io</td>
     <td>quay.nju.edu.cn</td>
     <td>南京大学开源镜像站, nexus3</td>
+  </tr>
+  <tr>
+    <td>quay.m.daocloud.io</td>
+    <td>daocloud</td>
   </tr>
   <tr>
     <td style="color: red;">quay.tencentcloudcr.com</td>
     <td>仅腾讯云vpc内部访问, registry2 proxy</td>
   </tr>
   <tr>
-    <td style="color: red;">quay.mirrors.ustc.edu.cn</td>
+    <td>quay.mirrors.ustc.edu.cn</td>
     <td>中科大</td>
   </tr>
   <tr>
-  <td rowspan="2">nvcr.io</td>
+  <td rowspan="3">nvcr.io</td>
     <td>nvcr.nju.edu.cn</td>
     <td>南京大学开源镜像站, nexus3</td>
+  </tr>
+    <tr>
+    <td>nvcr.m.daocloud.io</td>
+    <td>daocloud</td>
   </tr>
   <tr>
     <td style="color: red;">nvcr.tencentcloudcr.com</td>
