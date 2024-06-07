@@ -79,7 +79,7 @@
     <td>仅腾讯云vpc内部访问, registry2 proxy</td>
   </tr>
   <tr>
-  <td rowspan="6">docker.io</td>
+  <td rowspan="7">docker.io</td>
    <td style="color: red;">mirror.ccs.tencentyun.com</td>
     <td>仅腾讯云vpc内部访问, registry2 proxy</td>
   </tr>
@@ -91,28 +91,37 @@
     <td>docker.mirrors.sjtug.sjtu.edu.cn</td>  
     <td>上海交通大学, registry2 proxy</td>
   </tr>
+    <tr>
+    <td>reg-mirror.qiniu.com</td>
+    <td>七牛云</td>
+  </tr>
+    </tr>
+    <tr>
+    <td>docker.mirrors.ustc.edu.cn</td>
+    <td>中科大</td>
+  </tr>
   <tr>
     <td>docker.m.daocloud.io</td>
     <td>国内可用, 带宽低</td>
   </tr>
   <tr>
     <td>hub-mirror.c.163.com</td>
-    <td>国内可用，更新慢</td>
+    <td>网易国内可用，更新慢</td>
   </tr>
-  <tr>
-    <td>*****.mirror.aliyuncs.com</td>
-    <td>国内可用，更新慢</td>
-  </tr>
+
 </table>
 
 
 # 使用方法
-## 以argocd 清单文件为例：
-```
+## 前言
+### 以argocd 清单文件为例：
+```bash
 wget https://mirror.ghproxy.com/https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
-## 第一步：确定原始镜像地址仓库
-```
+
+### 首先需要确定原始镜像地址仓库
+以argocd yaml文件举例：
+```bash
 grep -n image: install.yaml
 21645:        image: quay.io/argoproj/argocd:v2.11.0
 21739:        image: ghcr.io/dexidp/dex:v2.38.0
@@ -124,27 +133,49 @@ grep -n image: install.yaml
 22531:        image: quay.io/argoproj/argocd:v2.11.0
 22825:        image: quay.io/argoproj/argocd:v2.11.0
 ```
-## 第二步：在表格中找到仓库地址对应的镜像地址
-如 *quay.io* 在表格中的镜像地址可选择*quay.nju.edu.cn*
-*ghcr.io* 在表格中的镜像地址可选择 *ghcr.nju.edu.cn*
 
-## 第三步：使用sed替换仓库地址为镜像地址
+### 在表格中找到仓库地址对应的镜像地址
+如 **quay.io**在表格中的镜像地址可选择**quay.nju.edu.cn** **ghcr.io** 在表格中的镜像地址可选择 **ghcr.nju.edu.cn**
+
+## 方案一
+**使用方式：**
+
+使用方式都是替换原来镜像的前缀域名即可实现加速效果，比如：
+```bash
+#docker.io
+原来地址： redis:7.0.14-alpine  # 这个是官方镜像，省略了前边的域名
+替换地址： docker.nju.edu.cn/redis:7.0.14-alpine
+#quary.io
+原来的地址： quay.io/argoproj/argocd:v2.11.0
+替换地址： quay.nju.edu.cn/argoproj/argocd:v2.11.0
+#ghcr.io
+原来的地址： ghcr.io/dexidp/dex:v2.38.0
+替换地址： ghcr.nju.edu.cn/dexidp/dex:v2.38.0
 ```
-sed -i 's#quay.io#quay.nju.edu.cn#g' install.yaml
-sed -i 's#ghcr.io#ghcr.nju.edu.cn#g' install.yaml
+## 方案二
+### 注意事项
+通过这种方式只能加速docker hub的镜像，对于其他镜像仓库，比如k8s.gcr.io, quay.io等，需要使用**方案一**替换前缀的方式进行加速。
+### 使用方式：
+还有一种方案是通过将加速地址写入到docker配置文件当中实现加速。
+
+**Ubuntu14.04、Debian7Wheezy**
+
+对于使用 upstart 的系统而言，编辑 /etc/default/docker 文件，在其中的 DOCKER_OPTS 中配置加速器地址：
+```Bash
+DOCKER_OPTS="--registry-mirror=https://hub-mirror.c.163.com"
+
 ```
-## 第四步：检查修改后的
-```
-grep -n image: install.yaml
-21645:        image: quay.nju.edu.cn/argoproj/argocd:v2.11.0
-21739:        image: ghcr.nju.edu.cn/dexidp/dex:v2.38.0
-21768:        image: quay.nju.edu.cn/argoproj/argocd:v2.11.0
-21850:        image: quay.nju.edu.cn/argoproj/argocd:v2.11.0
-21927:        image: redis:7.0.14-alpine
-22162:        image: quay.nju.edu.cn/argoproj/argocd:v2.11.0
-22214:        image: quay.nju.edu.cn/argoproj/argocd:v2.11.0
-22531:        image: quay.nju.edu.cn/argoproj/argocd:v2.11.0
-22825:        image: quay.nju.edu.cn/argoproj/argocd:v2.11.0
+**Ubuntu16.04+、Debian8+、CentOS7**
+
+
+对于使用 systemd 的系统，请在 /etc/docker/daemon.json 中写入如下内容（如果文件不存在请新建该文件）：
+```Bash
+{
+  "registry-mirrors": [
+    "https://hub-mirror.c.163.com",
+    "https://mirror.baidubce.com"
+  ]
+}
 ```
 # 贡献者
 
