@@ -29,7 +29,7 @@
     <th>备注</th>
   </tr>
   <tr>
-    <td rowspan="3">ghcr.io</td>
+    <td rowspan="4">ghcr.io</td>
     <td>ghcr.nju.edu.cn</td>
     <td>南京大学开源镜像站, nexus3</td>
   </tr>
@@ -37,12 +37,16 @@
     <td>ghcr.m.daocloud.io</td>
     <td>daocloud</td>
   </tr>
+      <tr>
+    <td>ghcr.dockerproxy.com</td>
+    <td>dockerproxy</td>
+  </tr>
   <tr>
     <td style="color: red;">ghcr.tencentcloudcr.com</td>
     <td>仅腾讯云vpc内部访问，registry2 proxy</td>
   </tr>
   <tr>
-    <td rowspan="3" >registry.k8s.io</td>
+    <td rowspan="4" >registry.k8s.io</td>
     <td>registry-k8s-io.mirrors.sjtug.sjtu.edu.cn</td>
     <td>上海交通大学, registry2 proxy</td>
   </tr>
@@ -50,12 +54,16 @@
     <td>k8s.m.daocloud.io</td>
     <td>daocloud</td>
   </tr>
+      <tr>
+    <td>k8s.dockerproxy.com</td>
+    <td>dockerproxy</td>
+  </tr>
   <tr>
     <td>k8s.nju.edu.cn</td>
     <td>南京大学开源镜像站, nexus3</td>
   </tr>
   <tr>
-   <td rowspan="4">k8s.gcr.io</td>
+   <td rowspan="5">k8s.gcr.io</td>
     <td>gcr.nju.edu.cn</td>
     <td>南京大学开源镜像站, nexus3</td>
   </tr>
@@ -67,18 +75,26 @@
     <td>ghcr.m.daocloud.io</td>
     <td>daocloud</td>
   </tr>
+      <tr>
+    <td>k8s.dockerproxy.com</td>
+    <td>dockerproxy</td>
+  </tr>
   <tr>
     <td style="color: red;">k8s.tencentcloudcr.com</td>
     <td>仅腾讯, 云vpc内部访问, registry2 proxy</td>
   </tr>
   <tr>
-    <td rowspan="4">quay.io</td>
+    <td rowspan="5">quay.io</td>
     <td>quay.nju.edu.cn</td>
     <td>南京大学开源镜像站, nexus3</td>
   </tr>
   <tr>
     <td>quay.m.daocloud.io</td>
     <td>daocloud</td>
+  </tr>
+        <tr>
+    <td>quay.dockerproxy.com</td>
+    <td>dockerproxy</td>
   </tr>
   <tr>
     <td style="color: red;">quay.tencentcloudcr.com</td>
@@ -102,7 +118,7 @@
     <td>仅腾讯云vpc内部访问, registry2 proxy</td>
   </tr>
   <tr>
-  <td rowspan="7">docker.io</td>
+  <td rowspan="8">docker.io</td>
    <td style="color: red;">mirror.ccs.tencentyun.com</td>
     <td>仅腾讯云vpc内部访问, registry2 proxy</td>
   </tr>
@@ -127,10 +143,20 @@
     <td>docker.m.daocloud.io</td>
     <td>国内可用, 带宽低</td>
   </tr>
+    <tr>
+    <td>dockerproxy.com</td>
+    <td>dockerproxy</td>
+  </tr>
   <tr>
     <td>hub-mirror.c.163.com</td>
     <td>网易国内可用，更新慢</td>
   </tr>
+
+  <td rowspan="1">mcr.microsoft.com</td>
+    <td>mcr.dockerproxy.com</td>
+    <td>dockerproxy</td>
+  </tr>
+
 
 </table>
 
