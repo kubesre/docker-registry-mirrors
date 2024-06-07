@@ -64,7 +64,7 @@
     <td>上海交通大学</td>
   </tr>
       <tr>
-    <td>ghcr.m.daocloud.io</td>
+    <td>k8s-gcr.m.daocloud.io</td>
     <td>daocloud</td>
   </tr>
   <tr>
