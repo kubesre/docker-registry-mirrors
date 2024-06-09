@@ -141,34 +141,38 @@ k8s.gcr.io/coredns/coredns => k8s-gcr.kubesre.xyz/coredns/coredns
     <td>仅腾讯云vpc内部访问, registry2 proxy</td>
   </tr>
   <tr>
-  <td rowspan="7">docker.io</td>
-   <td style="color: red;">mirror.ccs.tencentyun.com</td>
+  <td rowspan="8">docker.io</td>
+   <td style="color: red;"><del>mirror.ccs.tencentyun.com</del></td>
     <td>仅腾讯云vpc内部访问, registry2 proxy</td>
   </tr>
   <tr>
-    <td>docker.nju.edu.cn</td>
+    <td><del>docker.nju.edu.cn</del></td>
     <td>南京大学开源镜像站, nexus3</td>
   </tr>
   <tr>
-    <td>docker.mirrors.sjtug.sjtu.edu.cn</td>  
+    <td><del>docker.mirrors.sjtug.sjtu.edu.cn</del></td>
     <td>上海交通大学, registry2 proxy</td>
   </tr>
     <tr>
-    <td>reg-mirror.qiniu.com</td>
-    <td>七牛云</td>
+    <td><del>reg-mirror.qiniu.com</del></td>
+    <td>七牛云：失效</td>
   </tr>
     </tr>
     <tr>
-    <td>docker.mirrors.ustc.edu.cn</td>
-    <td>中科大</td>
+    <td><del>docker.mirrors.ustc.edu.cn</del></td>
+    <td>中科大：失效</td>
   </tr>
   <tr>
     <td>docker.m.daocloud.io</td>
     <td>国内可用, 带宽低</td>
   </tr>
+    <tr>
+    <td>docker.kubesre.xyz</td>
+    <td>国内可用, 带宽低</td>
+  </tr>
   <tr>
-    <td>hub-mirror.c.163.com</td>
-    <td>网易国内可用，更新慢</td>
+    <td><del>hub-mirror.c.163.com</del></td>
+    <td>网易国内可用，：失效</td>
   </tr>
 
 </table>
