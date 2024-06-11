@@ -25,6 +25,8 @@
 # 公益仓库
 由于很多仓库都失效了，所以我们搭建了公益的镜像仓库，供大家下载使用。
 镜像仓库的带宽有限，所以，推荐自行搭建
+- 当前 IP 限流 20r/m (每分钟20个请求)
+
 **搭建自己的镜像加速仓库**
 [crproxy](https://github.com/wzshiming/crproxy/tree/master/examples/default)
 ```
