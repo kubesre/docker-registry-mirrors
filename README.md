@@ -21,6 +21,17 @@
 
 📢 注意：近日一些提供公有镜像仓库的组织,宣布因监管要求被下架,需要自行核实镜像加速地址的有效性,如果失效了,或者发现了新的镜像也欢迎告诉我们。目前已知提供公有镜像服务比较好的项目：[public-image-mirror](https://github.com/DaoCloud/public-image-mirror)
 
+# 推荐 🚀使用一键脚本搭建自己的镜像加速仓库
+详细使用说明： [dockerproxy](https://github.com/kubesre/docker-registry-mirrors/dockerproxy)
+```
+# CentOS
+yum -y install wget curl
+# ubuntu
+apt -y install wget curl
+
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/kubesre/docker-registry-mirrors/main/dockerproxy/install/DockerProxy_Install.sh)"
+
+```
 
 # 公益仓库
 由于很多仓库都失效了，所以我们搭建了公益的镜像仓库，供大家下载使用。
@@ -28,7 +39,7 @@
 - 当前 IP 限流 20r/m (每分钟20个请求)
 
 **搭建自己的镜像加速仓库**
-[crproxy](https://github.com/wzshiming/crproxy/tree/master/examples/default)
+[dockerproxy](https://github.com/kubesre/docker-registry-mirrors/dockerproxy)
 ```
 kubesre.xyz
 ```
@@ -74,7 +85,7 @@ k8s.gcr.io/coredns/coredns => k8s-gcr.kubesre.xyz/coredns/coredns
 
 | 微信 | 支付宝 |
 |:--------:|:-------:|
-| <img src="images/wx.jpg" width="200" /> | <img src="images/ali.jpg" width="180" /> |
+| <img src="images/wx.jpg" width="200" /> | <img src="images/ali.jpg" width="200" /> |
 
 **提示**
 
@@ -86,6 +97,7 @@ k8s.gcr.io/coredns/coredns => k8s-gcr.kubesre.xyz/coredns/coredns
 
 | 日期       | 用户名          | 金额   | 用户留言                                             |
 |------------|-----------------|--------|----------------------------------------------------|
+|2024-06-15 |*康站 |     ￥100   |希望你们走的远一些，坚持住！|
 |2024-06-13 |王磊*站 |     ￥120   |感谢你们提供的镜像服务，极大地方便|
 |2024-06-13 |李娜的编程*         |￥85    |镜像站太棒了，解决了我多个项目的依赖问题，支持！|
 |2024-06-13 |张强*工作室       |￥200 |  镜像站的稳定性和速度都让我印象深刻，会持续关注和支持！|
@@ -101,192 +113,9 @@ k8s.gcr.io/coredns/coredns => k8s-gcr.kubesre.xyz/coredns/coredns
 | 2024-06-12 | donate_4_freedom | ￥12   | 虽然只是小额，但希望支持你们继续提供自由的服务！ |
 | 2024-06-12 | tech_enthusiast | ￥48   | 服务体验很好，希望你们能继续提供高质量的服务！   |
 
-## 收集的一些公开镜像仓库
-
-📢 注意：近日一些提供公有镜像仓库的组织,宣布因监管要求被下架,需要自行核实镜像加速地址的有效性
-
-<table border="1">
-  <tr>
-    <th>仓库地址</th>
-    <th>镜像地址</th>
-    <th>备注</th>
-  </tr>
-  <tr>
-    <td rowspan="3">ghcr.io</td>
-    <td>ghcr.nju.edu.cn</td>
-    <td>南京大学开源镜像站, nexus3</td>
-  </tr>
-    <tr>
-    <td>ghcr.m.daocloud.io</td>
-    <td>daocloud</td>
-  </tr>
-  <tr>
-    <td style="color: red;">ghcr.tencentcloudcr.com</td>
-    <td>仅腾讯云vpc内部访问，registry2 proxy</td>
-  </tr>
-  <tr>
-    <td rowspan="3" >registry.k8s.io</td>
-    <td>registry-k8s-io.mirrors.sjtug.sjtu.edu.cn</td>
-    <td>上海交通大学, registry2 proxy</td>
-  </tr>
-      <tr>
-    <td>k8s.m.daocloud.io</td>
-    <td>daocloud</td>
-  </tr>
-  <tr>
-    <td>k8s.nju.edu.cn</td>
-    <td>南京大学开源镜像站, nexus3</td>
-  </tr>
-  <tr>
-   <td rowspan="4">k8s.gcr.io</td>
-    <td>gcr.nju.edu.cn</td>
-    <td>南京大学开源镜像站, nexus3</td>
-  </tr>
-  <tr>
-    <td>k8s-gcr-io.mirrors.sjtug.sjtu.edu.cn</td>
-    <td>上海交通大学</td>
-  </tr>
-      <tr>
-    <td>k8s-gcr.m.daocloud.io</td>
-    <td>daocloud</td>
-  </tr>
-  <tr>
-    <td style="color: red;">k8s.tencentcloudcr.com</td>
-    <td>仅腾讯, 云vpc内部访问, registry2 proxy</td>
-  </tr>
-  <tr>
-    <td rowspan="4">quay.io</td>
-    <td>quay.nju.edu.cn</td>
-    <td>南京大学开源镜像站, nexus3</td>
-  </tr>
-  <tr>
-    <td>quay.m.daocloud.io</td>
-    <td>daocloud</td>
-  </tr>
-  <tr>
-    <td style="color: red;">quay.tencentcloudcr.com</td>
-    <td>仅腾讯云vpc内部访问, registry2 proxy</td>
-  </tr>
-  <tr>
-    <td>quay.mirrors.ustc.edu.cn</td>
-    <td>中科大</td>
-  </tr>
-  <tr>
-  <td rowspan="3">nvcr.io</td>
-    <td>nvcr.nju.edu.cn</td>
-    <td>南京大学开源镜像站, nexus3</td>
-  </tr>
-    <tr>
-    <td>nvcr.m.daocloud.io</td>
-    <td>daocloud</td>
-  </tr>
-  <tr>
-    <td style="color: red;">nvcr.tencentcloudcr.com</td>
-    <td>仅腾讯云vpc内部访问, registry2 proxy</td>
-  </tr>
-  <tr>
-  <td rowspan="8">docker.io</td>
-   <td style="color: red;"><del>mirror.ccs.tencentyun.com</del></td>
-    <td>仅腾讯云vpc内部访问, registry2 proxy</td>
-  </tr>
-  <tr>
-    <td><del>docker.nju.edu.cn</del></td>
-    <td>南京大学开源镜像站, nexus3</td>
-  </tr>
-  <tr>
-    <td><del>docker.mirrors.sjtug.sjtu.edu.cn</del></td>
-    <td>上海交通大学, registry2 proxy</td>
-  </tr>
-    <tr>
-    <td><del>reg-mirror.qiniu.com</del></td>
-    <td>七牛云：失效</td>
-  </tr>
-    </tr>
-    <tr>
-    <td><del>docker.mirrors.ustc.edu.cn</del></td>
-    <td>中科大：失效</td>
-  </tr>
-  <tr>
-    <td>docker.m.daocloud.io</td>
-    <td>国内可用, 带宽低</td>
-  </tr>
-    <tr>
-    <td>docker.kubesre.xyz</td>
-    <td>国内可用, 带宽低</td>
-  </tr>
-  <tr>
-    <td><del>hub-mirror.c.163.com</del></td>
-    <td>网易国内可用，：失效</td>
-  </tr>
-
-</table>
 
 
-# 使用方法
-## 前言
-### 以argocd 清单文件为例：
-```bash
-wget https://mirror.ghproxy.com/https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-```
 
-### 首先需要确定原始镜像地址仓库
-以argocd yaml文件举例：
-```bash
-grep -n image: install.yaml
-21645:        image: quay.io/argoproj/argocd:v2.11.0
-21739:        image: ghcr.io/dexidp/dex:v2.38.0
-21768:        image: quay.io/argoproj/argocd:v2.11.0
-21850:        image: quay.io/argoproj/argocd:v2.11.0
-21927:        image: redis:7.0.14-alpine
-22162:        image: quay.io/argoproj/argocd:v2.11.0
-22214:        image: quay.io/argoproj/argocd:v2.11.0
-22531:        image: quay.io/argoproj/argocd:v2.11.0
-22825:        image: quay.io/argoproj/argocd:v2.11.0
-```
-
-### 在表格中找到仓库地址对应的镜像地址
-如 **quay.io**在表格中的镜像地址可选择**quay.nju.edu.cn** **ghcr.io** 在表格中的镜像地址可选择 **ghcr.nju.edu.cn**
-
-## 方案一
-**使用方式：**
-
-使用方式都是替换原来镜像的前缀域名即可实现加速效果，比如：
-```bash
-#docker.io
-原来地址： redis:7.0.14-alpine  # 这个是官方镜像，省略了前边的域名
-替换地址： docker.nju.edu.cn/redis:7.0.14-alpine
-#quary.io
-原来的地址： quay.io/argoproj/argocd:v2.11.0
-替换地址： quay.nju.edu.cn/argoproj/argocd:v2.11.0
-#ghcr.io
-原来的地址： ghcr.io/dexidp/dex:v2.38.0
-替换地址： ghcr.nju.edu.cn/dexidp/dex:v2.38.0
-```
-## 方案二
-### 注意事项
-通过这种方式只能加速docker hub的镜像，对于其他镜像仓库，比如k8s.gcr.io, quay.io等，需要使用**方案一**替换前缀的方式进行加速。
-### 使用方式：
-还有一种方案是通过将加速地址写入到docker配置文件当中实现加速。
-
-**Ubuntu14.04、Debian7Wheezy**
-
-对于使用 upstart 的系统而言，编辑 /etc/default/docker 文件，在其中的 DOCKER_OPTS 中配置加速器地址：
-```Bash
-DOCKER_OPTS="--registry-mirror=https://hub-mirror.c.163.com"
-
-```
-**Ubuntu16.04+、Debian8+、CentOS7**
-
-
-对于使用 systemd 的系统，请在 /etc/docker/daemon.json 中写入如下内容（如果文件不存在请新建该文件）：
-```Bash
-{
-  "registry-mirrors": [
-    "https://hub-mirror.c.163.com",
-    "https://mirror.baidubce.com"
-  ]
-}
-```
 # 贡献者
 
 <a href="https://github.com/kubesre/docker-registry-mirrors/graphs/contributors">

@@ -1,0 +1,45 @@
+services:
+  gateway:
+    image: ghcr.io/wzshiming/nginx-certbot:v1.21.4
+    container_name: gateway
+    restart: unless-stopped
+    volumes:
+      - ./nginx/:/etc/nginx/conf.d/
+      - ./certbot/conf/:/etc/letsencrypt/
+      - ./certbot/www/:/var/www/certbot/
+      - ./html:/usr/share/nginx/html
+      - ./log/nginx/:/var/log/nginx/
+      - ./log/letsencrypt:/var/log/letsencrypt/
+    ports:
+      - "80:80"
+      - "443:443"
+
+  crproxy:
+    image: ghcr.io/wzshiming/crproxy/crproxy:v0.1.0
+    container_name: crproxy
+    restart: unless-stopped
+
+  # Uncomment the following block if you need to use a registry service
+  # registry:
+  #   image: docker.io/library/registry:2.8.1
+  #   container_name: registry
+  #   restart: unless-stopped
+  #   command:
+  #     - registry
+  #     - serve
+  #     - /etc/docker/registry/config.yml
+  #   volumes:
+  #     - ./registry:/var/lib/registry:rw
+  #     - ./registry/config.yml:/etc/docker/registry/config.yml:ro
+
+  # Uncomment the following block if you need to use a proxy for crproxy
+  # proxy:
+  #   image: ghcr.io/wzshiming/bridge/bridge:v0.8.6
+  #   container_name: proxy
+  #   restart: unless-stopped
+  #   ports:
+  #     - "8080:8080"
+  #   command: -b :8080 -p 
+  #   environment:
+  #     - https_proxy=http://proxy:8080
+  #     - http_proxy=http://proxy:8080
