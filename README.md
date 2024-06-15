@@ -22,7 +22,7 @@
 📢 注意：近日一些提供公有镜像仓库的组织,宣布因监管要求被下架,需要自行核实镜像加速地址的有效性,如果失效了,或者发现了新的镜像也欢迎告诉我们。目前已知提供公有镜像服务比较好的项目：[public-image-mirror](https://github.com/DaoCloud/public-image-mirror)
 
 # 推荐 🚀使用一键脚本搭建自己的镜像加速仓库
-详细使用说明： [dockerproxy](https://github.com/kubesre/docker-registry-mirrors/dockerproxy)
+详细使用说明： [dockerproxy](https://github.com/kubesre/docker-registry-mirrors/tree/main/dockerproxy)
 ```
 # CentOS
 yum -y install wget curl
@@ -39,7 +39,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/kubesre/docker-registry-
 - 当前 IP 限流 20r/m (每分钟20个请求)
 
 **搭建自己的镜像加速仓库**
-[dockerproxy](https://github.com/kubesre/docker-registry-mirrors/dockerproxy)
+[dockerproxy](https://github.com/kubesre/docker-registry-mirrors/tree/main/dockerproxy)
 ```
 kubesre.xyz
 ```
