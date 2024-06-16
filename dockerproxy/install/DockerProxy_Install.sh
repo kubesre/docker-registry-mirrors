@@ -48,7 +48,6 @@ function WARN() {
 
 # 服务部署和配置持久华存储路径
 PROXY_DIR="/data/registry-proxy"
-GATEWAY_FILES=$(ls ${PROXY_DIR}/nginx/gateway-*.conf)
 mkdir -p ${PROXY_DIR}
 cd "${PROXY_DIR}"
 
@@ -491,7 +490,7 @@ INFO
 INFO "================================================================"
 }
 function SELECT_GATEWAY() {
-    
+GATEWAY_FILES=$(ls ${PROXY_DIR}/nginx/gateway-*.conf)
 if [ -z "$GATEWAY_FILES" ]; then
   ERROR "没有找到任何网关域名配置文件,请先添加网关"
   exit 1
