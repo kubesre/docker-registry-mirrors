@@ -92,11 +92,11 @@ docker pull your_render_url/quay.io/argoproj/argocd:v2.11.0
 
 
 ## ⚠️ 费用方面
-**1.** cpu和内存费用
+**1.** cpu和内存费用，0.21(每天)*30(天)=6.3元/月
 
 ![image](images/image10.png)
 
-**2.** 网络费用
+**2.** 网络费用，0.78元/GB，按流量计费
 ![image](images/image11.png)
 
 
