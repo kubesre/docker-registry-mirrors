@@ -40,7 +40,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/kubesre/docker-registry-
 
 </details>
 
-## 使用Render部署（无需服务器和域名方案-低成本方案）
+## 使用Sealos部署（无需服务器和域名-个人使用低成本方案）
 <details>
 <summary><strong>部署到 Sealos</strong></summary>
 <div>
