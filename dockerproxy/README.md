@@ -31,12 +31,21 @@ apt -y install wget curl
 
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/kubesre/docker-registry-mirrors/main/dockerproxy/install/DockerProxy_Install.sh)"
 ```
-## 使用Render部署（无需服务器和域名方案）
+## 使用Render部署（无需服务器和域名且免费方案）
 <details>
 <summary><strong>部署到 Render</strong></summary>
 <div>
 
 [使用Render快速部署](Render/README.md)
+
+</details>
+
+## 使用Render部署（无需服务器和域名方案-低成本方案）
+<details>
+<summary><strong>部署到 Sealos</strong></summary>
+<div>
+
+[使用Sealos快速部署](Sealos/README.md)
 
 </details>
 
