@@ -55,7 +55,7 @@ cd "${PROXY_DIR}"
 GITRAW="https://raw.githubusercontent.com/kubesre/docker-registry-mirrors/main/dockerproxy"
 
 # 部署的容器名称和镜像版本
-# CONTAINER_NAME_LIST=("reg-docker-hub" "reg-ghcr" "reg-k8s-gcr")
+CONTAINER_NAME_LIST=("gateway" "crproxy")
 IMAGE_NAME="ghcr.io/wzshiming/nginx-certbot"
 CRPROXY_IMAGE_NAME="ghcr.io/wzshiming/crproxy/crproxy"
 DOCKER_COMPOSE_FILE="docker-compose.yaml"
@@ -364,12 +364,37 @@ fi
 
 function START_CONTAINER() {
     docker compose up -d --force-recreate
+    CHECK_DOCKER_PROXY
     ADD_GATEWAY
     INIT_ALIAS
 }
 
 function RESTART_CONTAINER() {
     docker compose restart
+}
+
+function CHECK_DOCKER_PROXY(){
+    INFO "======================= 检测DOCKER PROXY部署状态 ======================="
+    # 获取所有正在运行的容器名称
+    running_containers=$(docker ps --format "{{.Names}}")
+
+    # 标记是否有服务未运行
+    all_running=true
+
+    for service in "${CONTAINER_NAME_LIST[@]}"
+    do
+    if ! echo "$running_containers" | grep -q "$service"; then
+        ERROR " $service 服务没有在运行，部署失败"
+        all_running=false
+    fi
+    done
+
+    if [ "$all_running" = true ]; then
+    INFO "DOCKER PROXY 服务部署成功！"
+    else
+    exit 1
+    fi
+
 }
 
 function INSTALL_DOCKER_PROXY() {
@@ -642,7 +667,7 @@ EOF
     fi
 }
 function ADD_GATEWAY(){
-        
+        CHECK_DOCKER_PROXY
         INFO "======================= 配置域名 ======================="
         WARN "网关域名是可以让你以增加前缀的方式拉取源仓库的镜像，配置前请确认域名的[@记录和*记录]已经解析到该服务器！"
         
@@ -654,6 +679,7 @@ function ADD_GATEWAY(){
         INFO "${gateway_domain} 域名配置成功！"
 }
 function ADD_COMMON_ALIAS() {
+        CHECK_DOCKER_PROXY
         INFO "======================= 增加常用别名仓库 ======================="
         if [[ ! -z ${gateway_domain} ]];then
             GETEWAY="${gateway_domain}"
@@ -685,6 +711,7 @@ function INIT_ALIAS(){
 done
 }
 function ADD_ALIAS(){
+            CHECK_DOCKER_PROXY
             if [ $# -eq 3 ]; then
                 alias_domain=$1
                 alias_origin=$2
