@@ -49,6 +49,7 @@ k8s.gcr.io/coredns/coredns => k8s-gcr.kubesre.xyz/coredns/coredns
 ## 支持前缀替换的 Registry
 
 前缀替换的 Registry 的规则, 这是人工配置的, 有需求提 Issue.**
+
 📢 注意： dockerhub仓库的别名：`docker.kubesre.xyz`被墙，更换成：`dhub.kubesre.xyz`
 
 | 源站	                 | 替换为              |
