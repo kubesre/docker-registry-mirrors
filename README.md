@@ -78,7 +78,7 @@ k8s.gcr.io/coredns/coredns => k8s-gcr.kubesre.xyz/coredns/coredns
 
 | 微信 | 支付宝 |
 |:--------:|:-------:|
-| <img src="images/wx.jpg" width="200" /> | <img src="images/ali.jpg" width="200" /> |
+| <img src="https://images.gbfeng.com/images/202406191002106.png" width="200" /> | <img src="https://images.gbfeng.com/images/202406191005107.png" width="200" /> |
 
 **提示**
 
