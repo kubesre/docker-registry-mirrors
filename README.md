@@ -9,7 +9,7 @@
 [![GitHub Pull Requests](https://img.shields.io/github/stars/kubesre/docker-registry-mirrors)](https://github.com/kubesre/docker-registry-mirrors/stargazers)
 [![HitCount](https://views.whatilearened.today/views/github/kubesre/docker-registry-mirrors.svg)](https://github.com/kubesre/docker-registry-mirrors)
 [![GitHub license](https://img.shields.io/github/license/kubesre/docker-registry-mirrors)](https://github.com/kubesre/docker-registry-mirrors/blob/main/LICENSE)
-
+https://github.com/kubesre/docker-registry-mirrors/issues
 <p> 多平台容器镜像代理服务,支持 Docker Hub, GitHub, Google, k8s, Quay, Microsoft 等镜像仓库. </p>
 
 <img src="https://cdn.jsdelivr.net/gh/kubesre/tu@main/img/image_20240420_214408.gif" width="800"  height="3">
@@ -20,6 +20,8 @@
 在此，对那些提供公共仓库镜像的企业或组织，致以感谢🫡！
 
 📢 注意：近日一些提供公有镜像仓库的组织,宣布因监管要求被下架,需要自行核实镜像加速地址的有效性,如果失效了,或者发现了新的镜像也欢迎告诉我们。目前已知提供公有镜像服务比较好的项目：[public-image-mirror](https://github.com/DaoCloud/public-image-mirror)
+
+
 
 # 强烈推荐 🚀单镜像加速通道
 您可以根据 [镜像同步 Issue 模板](https://github.com/kubesre/docker-registry-mirrors/issues/new?assignees=&labels=sync+image&projects=&template=sync-image.yml) 创建一个 Issue, 将会有机器人帮您优先主动同步指定的镜像
@@ -36,7 +38,7 @@
 
 
 
-## 推荐 🚀快速搭建自己的镜像加速仓库
+# 🚀快速搭建自己的镜像加速仓库
 
 [搭建自己的镜像加速仓库](dockerproxy/README.md)
 
