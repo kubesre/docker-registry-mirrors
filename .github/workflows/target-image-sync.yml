@@ -4,7 +4,6 @@ on:
     types:
       - opened
 
-# https://docs.github.com/en/actions/security-guides/automatic-token-authentication#permissions-for-the-github_token
 permissions:
   issues: write
 
@@ -14,13 +13,10 @@ jobs:
     if: contains(github.event.issue.labels.*.name, 'sync image')
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      # REGISTRY: ${{ secrets.REGISTRY }}
-      # NAME_SPACE: ${{ secrets.NAME_SPACE }}
-      # USER: ${{ secrets.USER }}
-      # PASSWORD: ${{ secrets.PASSWORD }}
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+
     - name: Check Issue
       id: get-image
       env:
@@ -44,6 +40,7 @@ jobs:
           exit 1
         fi
         echo "image=${ORIGIN_IMAGE}" >> $GITHUB_OUTPUT
+
     - name: Check Image
       run: |
         ORIGIN_IMAGE="${{ steps.get-image.outputs.image }}"
@@ -55,6 +52,7 @@ jobs:
         registry: ${{ secrets.REGISTRY }}
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
+
     - name: Sync Docker Image
       run: |
         ORIGIN_IMAGE="${{ steps.get-image.outputs.image }}"
@@ -64,40 +62,25 @@ jobs:
         docker pull ${ORIGIN_IMAGE}
         docker tag ${ORIGIN_IMAGE} ${TARGET_IMAGE}
         docker push ${TARGET_IMAGE}
+        docker tag ${TARGET_IMAGE} ${ORIGIN_IMAGE}
         
-        # Capture the response from curl
         RESPONSE=$(curl -s -X POST "${{ secrets.APIURL }}" \
           -H "Content-Type: application/json" \
           -H "Authorization: Bearer ${{ secrets.APIKEY }}" \
           -d "{\"namespace\": \"${{ secrets.NAMESPACE }}\" , \"repository\": \"${BASE_IMAGE}\" }")
     
-        # Define the expected value
         EXPECTED_VALUE='{"message":"已将仓库设置为公开"}'
     
-        # Check if the response matches the expected value
         if [[ "$RESPONSE" == "$EXPECTED_VALUE" ]]; then
           echo "API call was successful and returned the expected value."
-          gh issue comment ${{ github.event.issue.number }} -b "镜像 ${ORIGIN_IMAGE} 同步完成<br>请使用 ${TARGET_IMAGE} 替代源镜像"
+          gh issue comment ${{ github.event.issue.number }} -b "镜像 ${ORIGIN_IMAGE} 同步完成<br>请使用 ${TARGET_IMAGE} 替代源镜像<br><br>以下是一些快捷命令：<br><pre>Docker 拉取命令:<br>```docker pull ${TARGET_IMAGE}```<br>重命名为原来镜像:<br>```docker tag ${TARGET_IMAGE} ${ORIGIN_IMAGE}```<br>Containerd 拉取命令:<br>```ctr images pull ${TARGET_IMAGE}```<br>重命名为原来镜像:<br>```ctr images tag  ${TARGET_IMAGE} ${ORIGIN_IMAGE}```<br>Shell 快速替换命令:<br>```sed -i 's#${ORIGIN_IMAGE}#${TARGET_IMAGE}#g' 你的文件名```</pre>"
           gh issue edit ${{ github.event.issue.number }} --add-label "sync image succeeded" -b "IMAGE SYNC"
           gh issue close ${{ github.event.issue.number }} --reason "completed"
         else
           echo "API call did not return the expected value."
           echo "Response: $RESPONSE"
           exit 1
-        fi
 
-    # - name: Sync Images
-    #   run: |
-    #     ORIGIN_IMAGE="${{ steps.get-image.outputs.image }}"
-    #     # curl --fail -X PUT "http://127.0.0.1:8000/internal/api/image/sync?image=${ORIGIN_IMAGE}"
-    #     # if ! ./hack/verify-allows.sh ./allows.txt "${ORIGIN_IMAGE}"; then
-    #     #   gh issue comment ${{ github.event.issue.number }} -b "镜像 ${ORIGIN_IMAGE} 同步完成<br>请使用 m.daocloud.io/${ORIGIN_IMAGE} 替代源镜像<br>这个镜像不在白名单列表里, 在未来可能将无法访问<br>将其添加到[白名单](https://github.com/DaoCloud/public-image-mirror/blob/main/allows.txt)"
-    #     # else
-    #     #   gh issue comment ${{ github.event.issue.number }} -b "镜像 ${ORIGIN_IMAGE} 同步完成<br>请使用 m.daocloud.io/${ORIGIN_IMAGE} 替代源镜像"
-    #     # fi
-    #     gh issue comment ${{ github.event.issue.number }} -b "镜像 ${ORIGIN_IMAGE} 同步完成<br>请使用 m.daocloud.io/${ORIGIN_IMAGE} 替代源镜像"
-    #     gh issue edit ${{ github.event.issue.number }} --add-label "sync image succeeded" -b "IMAGE SYNC"
-    #     gh issue close ${{ github.event.issue.number }} --reason "completed"
     - name: Fail Sync
       if: failure()
       run: |
