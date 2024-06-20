@@ -26,22 +26,29 @@ jobs:
       env:
         IMAGE: "${{ github.event.issue.title }}"
       run: |
-        ORIGIN_IMAGE="${IMAGE}"
+        ORIGIN_IMAGE=$(echo "${IMAGE}" | sed 's/ //g')
         if [[ "${ORIGIN_IMAGE}" == *"//"* ]] || [[ "${ORIGIN_IMAGE}" == *" "* ]]; then
           gh issue comment ${{ github.event.issue.number }} -b "镜像 '${ORIGIN_IMAGE}' 不是一个镜像"
           exit 1
         fi
         if [[ "${ORIGIN_IMAGE%%/*}" != *"."* ]] || [[ "${ORIGIN_IMAGE}" != *"/"* ]]; then
           if [[ "${ORIGIN_IMAGE}" != *":"* ]]; then
-            gh issue comment ${{ github.event.issue.number }} -b "镜像 '${ORIGIN_IMAGE}' 不存在呢, 请指定 域名 和 tag, 如: docker.io/${ORIGIN_IMAGE}:latest"
+            gh issue comment ${{ github.event.issue.number }} -b "由于你没有指定tag或者域名将使用默认的仓库\`docker.io\`和默认的tag\`latest\`,如: \`docker.io/${ORIGIN_IMAGE}:latest\`"
+            ORIGIN_IMAGE="docker.io/${ORIGIN_IMAGE}:latest"
+            gh issue edit ${{ github.event.issue.number }} --title "${ORIGIN_IMAGE}"
+
           else
-            gh issue comment ${{ github.event.issue.number }} -b "镜像 '${ORIGIN_IMAGE}' 不存在呢, 请指定域名, 如: docker.io/${ORIGIN_IMAGE}"
+            gh issue comment ${{ github.event.issue.number }} -b "由于你没有指定仓库名将使用默认的仓库\`docker.io\`,如: \`docker.io/${ORIGIN_IMAGE}\`"
+            ORIGIN_IMAGE="docker.io/${ORIGIN_IMAGE}"
+            gh issue edit ${{ github.event.issue.number }} --title "${ORIGIN_IMAGE}"
           fi
-          exit 1
+          # exit 1
         fi
         if [[ "${ORIGIN_IMAGE}" != *":"* ]]; then
-          gh issue comment ${{ github.event.issue.number }} -b "镜像 '${ORIGIN_IMAGE}' 不存在呢, 请指定 tag, 如: ${ORIGIN_IMAGE}:latest"
-          exit 1
+          gh issue comment ${{ github.event.issue.number }} -b "由于你没有指定仓库名将使用默认的tag\`latest\`, 如: \`${ORIGIN_IMAGE}:latest\`"
+          ORIGIN_IMAGE="${ORIGIN_IMAGE}:latest"
+          gh issue edit ${{ github.event.issue.number }} --title "${ORIGIN_IMAGE}"
+          # exit 1
         fi
         echo "image=${ORIGIN_IMAGE}" >> $GITHUB_OUTPUT
     - name: Check Image
@@ -77,7 +84,7 @@ jobs:
         # Check if the response matches the expected value
         if [[ "$RESPONSE" == "$EXPECTED_VALUE" ]]; then
           echo "API call was successful and returned the expected value."
-          gh issue comment ${{ github.event.issue.number }} -b "镜像 ${ORIGIN_IMAGE} 同步完成<br>请使用 ${TARGET_IMAGE} 替代源镜像"
+          gh issue comment ${{ github.event.issue.number }} -b "$(echo -e "\n镜像 ${ORIGIN_IMAGE} 同步完成<br>请使用 ${TARGET_IMAGE} 替代源镜像<br><br> <h1>快捷命令</h1><br>\n\`\`\`sh\n# Docker 拉取命令\ndocker pull ${TARGET_IMAGE}\ndocker tag ${TARGET_IMAGE} ${ORIGIN_IMAGE}\n\n# Containerd 拉取命令\nctr images pull ${TARGET_IMAGE}\nctr images tag ${TARGET_IMAGE} ${ORIGIN_IMAGE}\n\n# Shell 快速替换命令\nsed -i "s#${ORIGIN_IMAGE}#${TEARGET_IMAGE}#g" 你的文件名\n\`\`\`\n")"
           gh issue edit ${{ github.event.issue.number }} --add-label "sync image succeeded" -b "IMAGE SYNC"
           gh issue close ${{ github.event.issue.number }} --reason "completed"
         else
