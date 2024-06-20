@@ -27,7 +27,9 @@
 <details>
 <summary><strong>查看同步截图案例</strong></summary>
 <div>
+  
 ![](https://images.gbfeng.com/images/202406201502643.png)
+  
 ![](https://images.gbfeng.com/images/202406201459614.png)
 
 </details>
