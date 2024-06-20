@@ -1,0 +1,51 @@
+name: Sync Image
+description: 同步一个镜像到国内仓库,方便快速拉取
+labels:
+  - sync image
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # ↑↑↑↑↑↑↑↑↑↑↑ 填入你要同步的 Image
+        ## 请包含 域名/路径:标签
+
+  - type: checkboxes
+    id: domain
+    attributes:
+      label: 域名确认
+      options:
+        - label: 请确保包含域名(domain)
+
+  - type: markdown
+    attributes:
+      value: |
+        - 如 docker.io/
+        - 如 registry.k8s.io/
+        - 如果不包含域名, 需要主动添加默认的 docker.io/
+
+  - type: checkboxes
+    id: tag
+    attributes:
+      label: 标签确认
+      options:
+        - label: 请确保包含镜像的标签(tag)
+
+  - type: markdown
+    attributes:
+      value: |
+        - 如 :latest
+        - 如 :v1
+
+  - type: checkboxes
+    id: check
+    attributes:
+      label: 镜像存在性确认
+      options:
+        - label: 请确保这个镜像真实存在
+
+  - type: markdown
+    attributes:
+      value: |
+        - 如 docker.io/library/busybox:latest
+        - 如 docker.io/kindest/node:v1.30.0
+        - 如 registry.k8s.io/kubectl:v1.30.0
