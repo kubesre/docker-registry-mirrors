@@ -21,9 +21,24 @@
 
 📢 注意：近日一些提供公有镜像仓库的组织,宣布因监管要求被下架,需要自行核实镜像加速地址的有效性,如果失效了,或者发现了新的镜像也欢迎告诉我们。目前已知提供公有镜像服务比较好的项目：[public-image-mirror](https://github.com/DaoCloud/public-image-mirror)
 
+# 强烈推荐 🚀单镜像加速通道
+您可以根据 [镜像同步 Issue 模板](https://github.com/kubesre/docker-registry-mirrors/issues/new?assignees=&labels=sync+image&projects=&template=sync-image.yml) 创建一个 Issue, 将会有机器人帮您优先主动同步指定的镜像
+同步结果会在 Issue 中更新
+<details>
+<summary><strong>查看同步截图案例</strong></summary>
+<div>
+![](https://images.gbfeng.com/images/202406201502643.png)
+![](https://images.gbfeng.com/images/202406201459614.png)
+
+</details>
+
+
+
 ## 推荐 🚀快速搭建自己的镜像加速仓库
 
 [搭建自己的镜像加速仓库](dockerproxy/README.md)
+
+
 
 # 公益仓库
 由于很多仓库都失效了，所以我们搭建了公益的镜像仓库，供大家下载使用。
