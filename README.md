@@ -24,6 +24,8 @@
 [![](https://images.gbfeng.com/images/202406210949970.png)](https://sourl.cn/7NPiyJ)
 
 # 强烈推荐 🚀单镜像加速通道
+📢 注意：目前仅支持同步AMD架构的镜像
+
 您可以根据 [镜像同步 Issue 模板](https://github.com/kubesre/docker-registry-mirrors/issues/new?assignees=&labels=sync+image&projects=&template=sync-image.yml) 创建一个 Issue, 将会有机器人帮您优先主动同步指定的镜像
 同步结果会在 Issue 中更新
 <details>
