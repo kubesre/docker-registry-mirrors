@@ -27,7 +27,7 @@
 📢 注意：目前仅支持同步AMD架构的镜像
 
 您可以根据 [镜像同步 Issue 模板](https://github.com/kubesre/docker-registry-mirrors/issues/new?assignees=&labels=sync+image&projects=&template=sync-image.yml) 创建一个 Issue, 将会有机器人帮您优先主动同步指定的镜像
-同步结果会在 Issue 中更新
+同步结果会在 Issue 中更新,为了节约资源[这里可以查询已经同步过的镜像](https://dockerimage.gbfeng.com)
 <details>
 <summary><strong>查看同步截图案例</strong></summary>
 <div>
