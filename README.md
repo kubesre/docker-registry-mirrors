@@ -21,7 +21,7 @@
 📢 注意：近日一些提供公有镜像仓库的组织,宣布因监管要求被下架,需要自行核实镜像加速地址的有效性,如果失效了,或者发现了新的镜像也欢迎告诉我们。目前已知提供公有镜像服务比较好的项目：[public-image-mirror](https://github.com/DaoCloud/public-image-mirror)
 
 # 赞助商
-[![](https://images.gbfeng.com/images/202406210949970.png)](https://sourl.cn/7NPiyJ)
+- [永久免费的gpt](https://chat.gbfeng.com/)
 
 # 强烈推荐 🚀单镜像加速通道
 📢 注意：目前仅支持同步AMD架构的镜像
@@ -40,7 +40,7 @@
 
 
 
-# 🚀快速搭建自己的镜像加速仓库
+# 快速搭建自己的镜像加速仓库
 
 [搭建自己的镜像加速仓库](dockerproxy/README.md)
 
