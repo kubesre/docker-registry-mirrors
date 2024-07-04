@@ -23,7 +23,7 @@
 # 赞助商
 ## [使用永久免费的gpt](https://chat.gbfeng.com/)
 
- <img src="https://images.gbfeng.com/images/202407041353625.png" width="1000" /> 
+ <img src="https://images.gbfeng.com/images/202407041353625.png" width="500" /> 
 
 # 强烈推荐 🚀单镜像加速通道
 📢 注意：目前仅支持同步AMD架构的镜像
