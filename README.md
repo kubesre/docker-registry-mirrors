@@ -138,8 +138,9 @@ k8s.gcr.io/coredns/coredns => k8s-gcr.kubesre.xyz/coredns/coredns
 | 2024-06-12 | donate_4_freedom | ￥12   | 虽然只是小额，但希望支持你们继续提供自由的服务！ |
 | 2024-06-12 | tech_enthusiast | ￥48   | 服务体验很好，希望你们能继续提供高质量的服务！   |
 
+## 联系
 
-
+<img src="https://images.gbfeng.com/images/202407171756285.png" width="200" />
 
 # 贡献者
 
