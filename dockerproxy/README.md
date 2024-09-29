@@ -84,7 +84,7 @@ docker pull 你的域名/hello-world
 docker pull hello-world
 ```
 </details>
-
+<del>
 ## 使用Render部署（无需服务器和域名且免费方案）
 <details>
 <summary><strong>部署到 Render</strong></summary>
@@ -93,7 +93,7 @@ docker pull hello-world
 [使用Render快速部署](Render/README.md)
 
 </details>
-
+</del>
 ## 使用Sealos部署（无需服务器和域名-个人使用低成本方案）
 <details>
 <summary><strong>部署到 Sealos</strong></summary>
