@@ -1,0 +1,43 @@
+version: '3'
+services:
+  crproxy:
+    image: ghcr.io/daocloud/crproxy/crproxy:v0.13.0-alpha.15-4
+    container_name: crproxy
+    restart: unless-stopped
+    ports:
+    - 80:8080
+    - 443:8080
+    command: |
+       -a :8080
+       --enable-pprof true
+       #-u DOCKERHUB_USER:DOCKERHUB_USERPASS
+       #--storage-driver oss
+       #--storage-parameters region=oss-ap-southeast-1,accesskeyid=LTAI5t8AzfCskALz6CXEWb,accesskeysecret=8KSWMt1SXfbdoMFfk0BJuWKYGqGM,bucket=fanzhi-data
+       #--storage-parameters region=oss-ap-southeast-1,accesskeyid=LTAI5t8AkAcZLz6CXEWb,accesskeysecret=8KSWMt1SXfbdoMFfk0KYGqGM,bucket=docker-registry-mirrors,internal=true
+       --retry 3
+       --retry-interval 3s
+       --disable-keep-alives nvcr.io
+       --behind true
+       --disable-tags-list
+       --limit-delay
+       --privileged-no-auth    
+       --ips-speed-limit 1Gi/h
+       --blobs-speed-limit 1024Ki/s
+       --simple-auth
+       --token-url "https://you_domain/auth/token"
+       --acme-cache-dir=/tmp/acme
+       --acme-hosts=*
+       #--default-registry=docker.io
+       --override-default-registry=docker.you_domain.xyz=docker.io
+       --override-default-registry=l5d.you_domain.xyz=cr.l5d.io
+       --override-default-registry=elastic.you_domain.xyz=docker.elastic.co
+       --override-default-registry=gcr.you_domain.xyz=gcr.io
+       --override-default-registry=ghcr.you_domain.xyz=ghcr.io
+       --override-default-registry=k8s-gcr.you_domain.xyz=k8s.gcr.io
+       --override-default-registry=k8s.you_domain.xyz=registry.k8s.io
+       --override-default-registry=mcr.you_domain.xyz=mcr.microsoft.com
+       --override-default-registry=nvcr.you_domain.xyz=nvcr.io
+       --override-default-registry=quay.you_domain.xyz=quay.io
+       --override-default-registry=jujucharms.you_domain.xyz=registry.jujucharms.com
+       #--simple-auth
+       #--simple-auth-user username=pa
