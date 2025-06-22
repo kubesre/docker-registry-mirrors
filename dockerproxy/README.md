@@ -86,36 +86,56 @@ docker pull hello-world
 version: '3'
 services:
   crproxy:
+    #image: ghcr.io/daocloud/crproxy/crproxy:v0.10.0
     image: ghcr.io/daocloud/crproxy/crproxy:v0.13.0-alpha.15-4
     container_name: crproxy
     restart: unless-stopped
     ports:
-      - "80:8080"
-      - "443:8080"
-    environment:
-      - DOMAIN=you_domain.xyz  # 在此处定义域名变量
+    - 80:8080
+    - 443:8080
     command: |
-      -a :8080 
-      --enable-pprof true 
-      --retry 3 
-      --retry-interval 3s 
-      --disable-keep-alives nvcr.io 
-      --privileged-no-auth 
-      --simple-auth 
-      --token-url "https://$${DOMAIN}/auth/token"  # 使用双$$避免 compose 转义
-      --override-default-registry=docker.$${DOMAIN}=docker.io
-      --override-default-registry=l5d.$${DOMAIN}=cr.l5d.io
-      --override-default-registry=elastic.$${DOMAIN}=docker.elastic.co
-      --override-default-registry=gcr.$${DOMAIN}=gcr.io
-      --override-default-registry=ghcr.$${DOMAIN}=ghcr.io
-      --override-default-registry=k8s-gcr.$${DOMAIN}=k8s.gcr.io
-      --override-default-registry=k8s.$${DOMAIN}=registry.k8s.io
-      --override-default-registry=mcr.$${DOMAIN}=mcr.microsoft.com
-      --override-default-registry=nvcr.$${DOMAIN}=nvcr.io
-      --override-default-registry=quay.$${DOMAIN}=quay.io
-      --override-default-registry=jujucharms.$${DOMAIN}=registry.jujucharms.com
+       -a :8080
+       --enable-pprof true
+       #配置dockerhub认证用户，解决默认用户拉取限制
+       #-u username:password@docker.io
+       #配置存储，使用oss存储镜像
+       #--storage-driver oss
+       #--storage-parameters region=oss-ap-southeast-1,accesskeyid=LCskAz6CXEWb,accesskeysecret=8KSWMt1SXfbdoMFfk0BJuO2WKYGqGM,bucket=fanzhi-data
+       #--storage-parameters region=oss-ap-southeast-1,accesskeyid=LTAI5tAcZLz6CXEWb,accesskeysecret=8KSWMt1SXfbdoMFfk0BJuO2WKYGqGM,bucket=docker-registry-mirrors,internal=true
+       --retry 3
+       --retry-interval 3s
+       --disable-keep-alives nvcr.io
+       --behind true
+       --disable-tags-list
+       --limit-delay
+       --privileged-no-auth    
+       --ips-speed-limit 1Gi/h
+       --blobs-speed-limit 1024Ki/s
+       --simple-auth
+       --token-url "https://你的域名/auth/token"
+       --acme-cache-dir=/tmp/acme
+       --acme-hosts=*
+       #配置默认仓库
+       #--default-registry=docker.io
+       #配置仓库别名
+       --override-default-registry=docker.你的域名=docker.io
+       --override-default-registry=l5d.你的域名=cr.l5d.io
+       --override-default-registry=elastic.你的域名=docker.elastic.co
+       --override-default-registry=gcr.你的域名=gcr.io
+       --override-default-registry=ghcr.你的域名=ghcr.io
+       --override-default-registry=k8s-gcr.你的域名=k8s.gcr.io
+       --override-default-registry=k8s.你的域名=registry.k8s.io
+       --override-default-registry=mcr.你的域名=mcr.microsoft.com
+       --override-default-registry=nvcr.你的域名=nvcr.io
+       --override-default-registry=quay.你的域名=quay.io
+       --override-default-registry=jujucharms.你的域名=registry.jujucharms.com
+       --simple-auth
+       #添加认证用户
+      # --simple-auth-user username=password
+    tmpfs:
+      - /tmp/acme
 ```
-注意修改 environment 区块的变量 `DOMAIN=your-actual-domain.xyz` 为你自己的域名
+注意修改`你的域名` 为你自己的域名
 
 
 2.然后执行 `docker-compose up -d`
