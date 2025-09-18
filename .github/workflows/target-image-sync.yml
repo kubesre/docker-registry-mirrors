@@ -90,7 +90,7 @@ jobs:
         # Check if the response matches the expected value
         if [[ "$RESPONSE" == "$EXPECTED_VALUE" ]]; then
           echo "API call was successful and returned the expected value."
-          gh issue comment ${{ github.event.issue.number }} -b "$(echo -e "\n镜像 \`${ORIGIN_IMAGE}\` 同步完成<br>请使用 \`${TARGET_IMAGE}\` 替代源镜像<br> <h1>快捷命令</h1>[去使用快捷复制和查看镜像详细信息](https://dockerimage.gbfeng.com/image/${ORIGIN_IMAGE})\n\`\`\`sh\n# Docker 拉取命令\ndocker pull ${TARGET_IMAGE}\ndocker tag ${TARGET_IMAGE} ${ORIGIN_IMAGE}\n\n# Containerd 拉取命令\nctr images pull ${TARGET_IMAGE}\nctr images tag ${TARGET_IMAGE} ${ORIGIN_IMAGE}\n\n# Shell 快速替换命令\nsed -i "s#${ORIGIN_IMAGE}#${TARGET_IMAGE}#g" 你的文件名\n\`\`\`\n")"
+          gh issue comment ${{ github.event.issue.number }} -b "$(echo -e "\n镜像 \`${ORIGIN_IMAGE}\` 同步完成<br>请使用 \`${TARGET_IMAGE}\` 替代源镜像<br> <h1>快捷命令</h1>[去使用快捷复制和查看镜像详细信息](https://dockerimage.gbfeng.com/image-detail?image=${ORIGIN_IMAGE})\n\`\`\`sh\n# Docker 拉取命令\ndocker pull ${TARGET_IMAGE}\ndocker tag ${TARGET_IMAGE} ${ORIGIN_IMAGE}\n\n# Containerd 拉取命令\nctr images pull ${TARGET_IMAGE}\nctr images tag ${TARGET_IMAGE} ${ORIGIN_IMAGE}\n\n# Shell 快速替换命令\nsed -i "s#${ORIGIN_IMAGE}#${TARGET_IMAGE}#g" 你的文件名\n\`\`\`\n")"
           gh issue edit ${{ github.event.issue.number }} --add-label "sync image succeeded" -b "IMAGE SYNC"
           gh issue close ${{ github.event.issue.number }} --reason "completed"
         else
